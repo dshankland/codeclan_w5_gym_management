@@ -1,0 +1,10 @@
+<h2>Edit <%= @gymclass.name %></h2>
+<form method="POST" action="/classes/<%= @gymclass.id %>">
+  <label for="name-field">Name:</label>
+  <input type="text" name="name" id="name-field" value="<%= @gymclass.name %>" required/>
+  <label for="time">Time:</label>
+  <input type="text" name="time" id="time-field" value="<%= @gymclass.time %>" required/>
+  <label for="spaces">Spaces:</label>
+  <input type="number" name="spaces" id="spaces" min="0" value="<%= @gymclass.spaces %>" required/>
+  <input type="submit" value="Update Class"/>
+</form>

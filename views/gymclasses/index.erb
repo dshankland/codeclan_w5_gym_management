@@ -5,12 +5,18 @@
     <th>Name</th>
     <th>Time</th>
     <th>Spaces</th>
+    <th>Delete</th>
   </tr>
   <% for gymclass in @gymclasses %>
   <tr>
     <td><a href="/classes/<%= gymclass.id %>"><%= gymclass.name %></a></td>
     <td><%= gymclass.time %></td>
     <td><%= gymclass.spaces %></td>
+    <td>
+      <form method="post" action="/classes/<%= gymclass.id %>/delete">
+        <input type="submit" value="Delete"/>
+      </form>
+    </td>
   </tr>
   <% end %>
 </table>

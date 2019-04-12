@@ -1,6 +1,6 @@
 <h1><%= @member.name %></h1>
 
-<p>Membership: <%= @member.premium %></p>
+<p>Premium Membership: <%= @member.premium %></p>
 
 <h3>Classes:</h3>
 <ul>
@@ -8,3 +8,5 @@
   <li><%= gymclass.name %></li>
   <% end %>
 </ul>
+
+<a href="/members/<%= @member.id %>/edit">Edit</a>
