@@ -1,0 +1,12 @@
+<h1><%= @gymclass.name %></h1>
+
+<p>Time: <%= @gymclass.time %></p>
+<p>Spaces: <%= @gymclass.spaces %></p>
+
+<h3>Members:</h3>
+
+<ul>
+  <% @gymclass.members.each do |member| %>
+  <li><%= member.name %></li>
+  <% end %>
+</ul>

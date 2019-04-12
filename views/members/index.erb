@@ -1,0 +1,14 @@
+<h1>Members</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Membership</th>
+  </tr>
+  <% for member in @members %>
+  <tr>
+    <td><a href="/members/<%= member.id %>"><%= member.name %></a></td>
+    <td><%= member.premium %></td>
+  </tr>
+  <% end %>
+</table>

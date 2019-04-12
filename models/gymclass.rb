@@ -18,33 +18,40 @@ class GymClass
   end
 
   def save()
-    sql = "INSERT INTO gymclasses (name, time, spaces) VALUES ($1, $2, $3) RETURNING id"
+    sql = 'INSERT INTO gymclasses (name, time, spaces) VALUES ($1, $2, $3) RETURNING id'
     values = [@name, @time, @spaces]
     results = SqlRunner.run(sql, values)
     @id = results.first()['id'].to_i
   end
 
   def self.all()
-    sql = "SELECT * FROM gymclasses"
+    sql = 'SELECT * FROM gymclasses'
     results = SqlRunner.run( sql )
     return results.map {|gymclass| GymClass.new(gymclass)}
   end
 
   def update()
-    sql = "UPDATE gymclasses SET (name, time, spaces) = ($1, $2, $3) WHERE id = $4"
+    sql = 'UPDATE gymclasses SET (name, time, spaces) = ($1, $2, $3) WHERE id = $4'
     values = [@name,@time,@spaces]
     SqlRunner.run(sql, values)
   end
 
   def self.delete_all()
-    sql = "DELETE FROM gymclasses"
+    sql = 'DELETE FROM gymclasses'
     SqlRunner.run(sql)
   end
 
   def self.delete(id)
-    sql = "DELETE FROM gymclasses WHERE id = $1"
+    sql = 'DELETE FROM gymclasses WHERE id = $1'
     values = [id]
     SqlRunner.run(sql, values)
+  end
+
+  def self.find(id)
+    sql = 'SELECT * FROM gymclasses WHERE id = $1'
+    values = [id]
+    results = SqlRunner.run(sql, values)
+    return GymClass.new(results.first)
   end
 
 end

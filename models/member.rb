@@ -16,33 +16,40 @@ class Member
   end
 
   def save()
-    sql = "INSERT INTO members (name, premium) VALUES ($1, $2) RETURNING id"
+    sql = 'INSERT INTO members (name, premium) VALUES ($1, $2) RETURNING id'
     values = [@name, @premium]
     results = SqlRunner.run(sql, values)
     @id = results.first()['id'].to_i
   end
 
   def self.all()
-    sql = "SELECT * FROM members"
+    sql = 'SELECT * FROM members'
     results = SqlRunner.run( sql )
     return results.map {|member| Member.new(member)}
   end
 
   def update()
-    sql = "UPDATE members SET (name, premium) = ($1, $2) WHERE id = $3"
+    sql = 'UPDATE members SET (name, premium) = ($1, $2) WHERE id = $3'
     values = [@name,@premium]
     SqlRunner.run(sql, values)
   end
 
   def self.delete_all()
-    sql = "DELETE FROM members"
+    sql = 'DELETE FROM members'
     SqlRunner.run(sql)
   end
 
   def self.delete(id)
-    sql = "DELETE FROM members WHERE id = $1"
+    sql = 'DELETE FROM members WHERE id = $1'
     values = [id]
     SqlRunner.run(sql, values)
+  end
+
+  def self.find(id)
+    sql = 'SELECT * FROM members WHERE id = $1'
+    values = [id]
+    results = SqlRunner.run(sql, values)
+    return Member.new(results.first)
   end
 
 end

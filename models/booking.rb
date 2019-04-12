@@ -11,31 +11,31 @@ class Booking
   end
 
   def save()
-    sql = "INSERT INTO bookings (member_id, gymclass_id) VALUES ($1, $2) RETURNING id"
+    sql = 'INSERT INTO bookings (member_id, gymclass_id) VALUES ($1, $2) RETURNING id'
     values = [@member_id,@gymclass_id]
     results = SqlRunner.run(sql, values)
     @id = results.first()['id'].to_i
   end
 
   def self.all()
-    sql = "SELECT * FROM bookings"
+    sql = 'SELECT * FROM bookings'
     results = SqlRunner.run( sql )
     return results.map {|booking| Booking.new(booking)}
   end
 
   def update()
-    sql = "UPDATE bookings SET (member_id, gymclass_id) = ($1, $2) WHERE id = $3"
+    sql = 'UPDATE bookings SET (member_id, gymclass_id) = ($1, $2) WHERE id = $3'
     values = [@member_id,@gymclass_id]
     SqlRunner.run(sql, values)
   end
 
   def self.delete_all()
-    sql = "DELETE FROM bookings"
+    sql = 'DELETE FROM bookings'
     SqlRunner.run(sql)
   end
 
   def self.delete(id)
-    sql = "DELETE FROM bookings WHERE id = $1"
+    sql = 'DELETE FROM bookings WHERE id = $1'
     values = [id]
     SqlRunner.run(sql, values)
   end

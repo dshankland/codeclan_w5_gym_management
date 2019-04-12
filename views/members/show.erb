@@ -1,0 +1,10 @@
+<h1><%= @member.name %></h1>
+
+<p>Membership: <%= @member.premium %></p>
+
+<h3>Classes:</h3>
+<ul>
+  <% @member.classes.each do |class| %>
+  <li><%= class.name %></li>
+  <% end %>
+</ul>
