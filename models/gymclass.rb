@@ -1,4 +1,5 @@
 require_relative('../db/sql_runner.rb')
+require_relative('booking.rb')
 require('time')
 
 class GymClass
@@ -65,6 +66,22 @@ class GymClass
     values = [@id]
     results = SqlRunner.run(sql, values)
     return results.map {|member| Member.new(member)}
+  end
+
+  def available_members()
+    # add some logic in here to check whether the class is peak, and only supply a list
+    # of premium members
+    sql = "SELECT members.* FROM members;"
+    results = SqlRunner.run(sql)
+    return results.map {|member| Member.new(member)}
+  end
+
+  def add_member(member_id)
+    Booking.new({'member_id' => member_id, 'gymclass_id' => @id}).save()
+  end
+
+  def add_members(member_ids)
+    member_ids.each {|member_id| Booking.new({'member_id' => member_id, 'gymclass_id' => @id}).save()}
   end
 
 end

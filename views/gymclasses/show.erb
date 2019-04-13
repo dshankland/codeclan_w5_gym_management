@@ -3,6 +3,8 @@
 <p>Time: <%= @gymclass.time %></p>
 <p>Spaces: <%= @gymclass.spaces %></p>
 
+<a href="/classes/<%= @gymclass.id %>/edit">Edit</a>
+
 <h3>Members:</h3>
 
 <ul>
@@ -11,4 +13,25 @@
   <% end %>
 </ul>
 
-<a href="/classes/<%= @gymclass.id %>/edit">Edit</a>
+<h3>Add Members:</h3>
+
+<form method="POST" action="/bookings">
+  <select name="member_id">
+    <% @gymclass.available_members.each do |member| %>
+    <option value="<%= member.id %>" ><%= member.name %></option>
+    <% end %>
+  </select>
+  <select name="gymclass_id" hidden>
+    <option value="<%= @gymclass.id %>" selected><%= @gymclass.name %></option>
+  </select>
+  <input type="submit">
+</form>
+
+<form hidden method="POST" action="/classes/add_members/<%= @gymclass.id %>">
+<select name="add_multiple" multiple>
+  <% @gymclass.available_members.each do |member| %>
+  <option value="<%= member.id %>" <%= "selected" if @gymclass.members.map {|bookedmember| bookedmember.id}.include?(member.id) == true %>><%= member.name %></option>
+  <% end %>
+</select>
+<input type="submit">
+</form>
