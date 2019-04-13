@@ -3,6 +3,7 @@
   <input type="text" name="name" id="name-field" required />
   <label for="premium">Membership:</label>
   <input type="radio" name="premium" value="t">Premium<br>
-  <input type="radio" name="premium" value="f">Standard<br>
+  <input type="radio" name="premium" value="f" checked>Standard<br>
+  <button type="cancel" onclick="window.location='/members';return false;">Cancel</button>
   <input type="submit" value="Add Member">
 </form>

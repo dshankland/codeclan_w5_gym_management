@@ -29,6 +29,13 @@ class Booking
     SqlRunner.run(sql, values)
   end
 
+  def self.find(id)
+    sql = 'SELECT * FROM bookings WHERE id = $1'
+    values = [id]
+    results = SqlRunner.run(sql, values)
+    return Booking.new(results.first)
+  end
+
   def self.delete_all()
     sql = 'DELETE FROM bookings'
     SqlRunner.run(sql)
@@ -38,6 +45,27 @@ class Booking
     sql = 'DELETE FROM bookings WHERE id = $1'
     values = [id]
     SqlRunner.run(sql, values)
+  end
+
+  def delete()
+    sql = "DELETE FROM bookings WHERE id = $1"
+    values = [@id]
+    SqlRunner.run(sql, values)
+  end
+
+  # def self.remove(options)
+  #   member_id = options['member_id'].to_i
+  #   gymclass_id = options['gymclass_id'].to_i
+  #   sql = 'DELETE FROM bookings WHERE gymclass_id = $1 AND member_id = $2'
+  #   values = [member_id, gymclass_id]
+  #   SqlRunner.run(sql, values)
+  # end
+
+  def member_name()
+    sql = "SELECT members.name FROM members INNER JOIN bookings ON bookings.member_id = members.id WHERE bookings.id = $1;"
+    values = [@id]
+    result = SqlRunner.run(sql, values)
+    return result.first()['name']
   end
 
 end

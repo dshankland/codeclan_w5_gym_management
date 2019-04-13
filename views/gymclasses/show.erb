@@ -7,11 +7,22 @@
 
 <h3>Members:</h3>
 
-<ul>
-  <% @gymclass.members.each do |member| %>
-  <li><%= member.name %></li>
-  <% end %>
-</ul>
+<table class="gymclass-booking-member-table">
+  <tr>
+    <th>Name</th>
+    <th></th>
+  </tr>
+<% @gymclass.bookings.each do |booking| %>
+<tr>
+    <td><%= booking.member_name %></td>
+    <td>
+      <form method="post" action="/bookings/<%= booking.id %>/delete">
+        <input type="submit" value="Remove"/>
+      </form>
+    </td>
+</tr>
+<% end %>
+</table>
 
 <h3>Add Members:</h3>
 
