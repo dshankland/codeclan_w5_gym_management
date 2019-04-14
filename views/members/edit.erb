@@ -1,5 +1,5 @@
 <h2>Edit <%= @member.name %></h2>
-<form method="POST" action="/members/<%= @member.id %>">
+<form method="POST" action="/members/<%= @member.id %>" class="member-form">
   <div>
     <div>
       <label for="name">Name:</label>
@@ -8,6 +8,7 @@
     <label for="premium">Membership:</label>
     <input type="radio" name="premium" value="t" <%= "checked" if @member.premium == true %>>Premium<br>
     <input type="radio" name="premium" value="f" <%= "checked" if @member.premium == false %>>Standard<br>
-      <input type="submit" value="Update Member"/>
+    <button type="cancel" onclick="window.location='/members';return false;">Cancel</button>
+    <input type="submit" value="Update Member"/>
   </div>
 </form>

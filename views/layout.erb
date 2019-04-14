@@ -2,7 +2,7 @@
 <html>
 <head>
   <link rel="stylesheet" href="/styles/style.css">
-  <link href="https://fonts.googleapis.com/css?family=Rokkitt" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Nunito|Rokkitt|Roboto+Slab" rel="stylesheet">
   <title>gym4all</title>
 </head>
 <body>
@@ -10,11 +10,11 @@
   </div>
   <main>
   <nav>
-    <ul>
-      <li>
+    <ul class="main-nav">
+      <li <%= active_page?("classes") ? 'class="main-nav active"' : 'class="main-nav"' %>>
         <a href="/classes">Classes</a>
       </li>
-      <li>
+      <li <%= active_page?("members") ? 'class="main-nav active"' : 'class="main-nav"' %>>
         <a href="/members">Members</a>
       </li>
     </ul>

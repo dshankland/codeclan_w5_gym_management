@@ -1,12 +1,12 @@
 <h1><%= @member.name %></h1>
 
-<p>Premium Membership: <%= @member.premium %></p>
+<p><%= @member.premium ? "Premium" : "Standard" %> Membership</p>
+
+<button type="button" onclick="window.location='/members/<%= @member.id %>/edit';return false;">Edit Member Info</button>
 
 <h3>Classes:</h3>
-<ul>
+<ul class="member-class-list">
   <% @member.gymclasses.each do |gymclass| %>
-  <li><%= gymclass.name %></li>
+  <li class="member-class-list"><%= gymclass.time.strftime('%F %T') %> <%= gymclass.name %></li>
   <% end %>
 </ul>
-
-<a href="/members/<%= @member.id %>/edit">Edit</a>

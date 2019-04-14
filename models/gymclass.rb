@@ -102,6 +102,17 @@ class GymClass
     @time.hour.between?(7,8) || @time.hour.between?(17,19)
   end
 
+  # trying to write a function that will bring back a specific days
+  # gym class schedule, to aid building a schedule page
+  # takes a parameter of days, 0 will return today, 1 tomorrow, etc..
+  # bodged this to run using interpolation as values is not being detected for some reason
+  def self.date_range(days)
+    sql = "SELECT * FROM gymclasses WHERE DATE_TRUNC('day',time) = CURRENT_DATE + interval '#{days} day'"
+    # values = [days]
+    results = SqlRunner.run(sql)
+    return results.map {|gymclass| GymClass.new(gymclass)}
+  end
+
   # def add_member(member_id)
   #   Booking.new({'member_id' => member_id, 'gymclass_id' => @id}).save()
   # end

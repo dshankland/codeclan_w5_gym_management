@@ -1,18 +1,16 @@
-<h1>Classes</h1>
-
-<a href="/classes/new">New Class</a>
+<button type="button" onclick="window.location='/classes/new';return false;">New Class</button>
 
 <table>
   <tr>
     <th>Name</th>
-    <th>Time</th>
+    <th>Date/Time</th>
     <th>Spaces</th>
     <th>Delete</th>
   </tr>
   <% for gymclass in @gymclasses %>
   <tr>
     <td><a href="/classes/<%= gymclass.id %>"><%= gymclass.name %></a></td>
-    <td><%= gymclass.time %></td>
+    <td><%= gymclass.time.strftime('%F %T') %></td>
     <td><%= gymclass.spaces %></td>
     <td>
       <form method="post" action="/classes/<%= gymclass.id %>/delete">

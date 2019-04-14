@@ -1,22 +1,25 @@
 :root {
-  --my-font-family-1: "Rokkitt";
+  /* --my-font-family-1: "Rokkitt"; */
+  --my-font-family-1: "Nunito";
   --my-font-family-2: serif;
 }
 
 body {
   /* background:linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url(https://i.pinimg.com/474x/59/6d/1c/596d1cc9beb820e51c14b55e40317a74--logo-design-hogwarts-logo-printable.jpg) no-repeat center fixed; */
   /* background-size: cover; */
+  background-color: #dddddd;
 }
 
 html, body {
-  font-family: var(--my-font-family-1), var(--my-font-family-2), Palatino, serif;
+  font-family: var(--my-font-family-1), var(--my-font-family-2);
+  margin: 0;
 }
 
 p {
-  font-family: var(--my-font-family-1), var(--my-font-family-2), Palatino, serif;
+  font-family: var(--my-font-family-1), var(--my-font-family-2);
 }
 
-.student-form {
+.member-form, .gymclass-form {
   display: flex;
   flex-direction: column;
   width: 20em;
@@ -24,44 +27,44 @@ p {
 
 .header {
   /* background:linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url("/images/logo.png") no-repeat fixed; */
-  background:url("/images/logo.png") no-repeat center;
-  background-color: #ffffff;
+  background:url("/images/logo_black.png") no-repeat center;
+  background-color: #000000;
   padding: 1px;
   text-align: center;
-  height: 120px;
+  height: 100px;
   background-size: 100px 100px;
 }
 
-ul {
+ul.main-nav {
   list-style-type: none;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #ffffff;
+  background-color: #000000;
   position: -webkit-sticky;
   position: sticky;
   top: 0;
 }
 
-li {
+li.main-nav {
   float: left;
-  font-family: var(--my-font-family-1), var(--my-font-family-2), Palatino, serif;
+  font-family: var(--my-font-family-1), var(--my-font-family-2);
 }
 
-li a {
-  display: inline;
-  color: DarkSlateGrey;
+li.main-nav a {
+  display: block;
+  color: CornflowerBlue;
   text-align: center;
-  padding: 0.25em 2em;
+  padding: 5px 10px;
   text-decoration: none;
 }
 
-li a:hover {
-  background-color: #66ccff;
+li.main-nav a:hover {
+  background-color: #eeeeee;
 }
 
 .active {
-  background-color: #b3e6ff;
+  background-color: #dddddd;
 }
 
 table {

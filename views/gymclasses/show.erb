@@ -1,12 +1,9 @@
 <h1><%= @gymclass.name %></h1>
 
-<p>Time: <%= @gymclass.time %></p>
-<p>Spaces: <%= @gymclass.spaces %></p>
-
-<a href="/classes/<%= @gymclass.id %>/edit">Edit</a>
+<p><b>Date/Time:</b> <%= @gymclass.time.strftime('%F %T') %> <b>Spaces:</b> <%= @gymclass.spaces %></p>
+<button type="button" onclick="window.location='/classes/<%= @gymclass.id %>/edit';return false;">Edit Class Info</button>
 
 <h3>Members:</h3>
-
 <table class="gymclass-booking-member-table">
   <tr>
     <th>Name</th>

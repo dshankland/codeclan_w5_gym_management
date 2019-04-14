@@ -6,5 +6,6 @@
   <input type="datetime-local" name="time" id="time-field" value="<%= @gymclass.time.strftime('%FT%T') %>" required />
   <label for="spaces">Spaces:</label>
   <input type="number" name="spaces" id="spaces" min="0" value="<%= @gymclass.spaces %>" required/>
+  <button type="cancel" onclick="window.location='/classes';return false;">Cancel</button>
   <input type="submit" value="Update Class"/>
 </form>
