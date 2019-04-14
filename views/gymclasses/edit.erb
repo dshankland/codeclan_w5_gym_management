@@ -3,7 +3,7 @@
   <label for="name-field">Name:</label>
   <input type="text" name="name" id="name-field" value="<%= @gymclass.name %>" required/>
   <label for="time">Time:</label>
-  <input type="text" name="time" id="time-field" value="<%= @gymclass.time %>" required/>
+  <input type="datetime-local" name="time" id="time-field" value="<%= @gymclass.time.strftime('%FT%T') %>" required />
   <label for="spaces">Spaces:</label>
   <input type="number" name="spaces" id="spaces" min="0" value="<%= @gymclass.spaces %>" required/>
   <input type="submit" value="Update Class"/>

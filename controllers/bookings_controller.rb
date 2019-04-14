@@ -22,5 +22,5 @@ post '/bookings/:id/delete' do
   gymclass.increase_spaces()
   gymclass.update()
   redirect to("/classes/#{params['gymclass_id']}")
-  redirect back
+  # redirect back
 end

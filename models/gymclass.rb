@@ -80,7 +80,11 @@ class GymClass
     # add some logic in here to check whether the class is peak, and only supply a list
     # of premium members
     # sql = "SELECT members.* FROM members;"
-    sql = "SELECT * from members WHERE id NOT IN (SELECT member_id FROM bookings WHERE gymclass_id = $1);"
+    if is_peak()
+      sql = "SELECT * from members WHERE id NOT IN (SELECT member_id FROM bookings WHERE gymclass_id = $1) AND premium = TRUE;"
+    else
+      sql = "SELECT * from members WHERE id NOT IN (SELECT member_id FROM bookings WHERE gymclass_id = $1);"
+    end
     values = [@id]
     results = SqlRunner.run(sql, values)
     return results.map {|member| Member.new(member)}
@@ -92,6 +96,10 @@ class GymClass
 
   def increase_spaces()
     @spaces += 1
+  end
+
+  def is_peak()
+    @time.hour.between?(7,8) || @time.hour.between?(17,19)
   end
 
   # def add_member(member_id)
