@@ -11,7 +11,7 @@ class GymClass
     @id = options['id'].to_i if options['id']
     @name = options['name']
     @time = to_time(options['time'])
-    @spaces = options['spaces']
+    @spaces = options['spaces'].to_i
   end
 
   def to_time(param)
@@ -84,6 +84,14 @@ class GymClass
     values = [@id]
     results = SqlRunner.run(sql, values)
     return results.map {|member| Member.new(member)}
+  end
+
+  def decrease_spaces()
+    @spaces -= 1
+  end
+
+  def increase_spaces()
+    @spaces += 1
   end
 
   # def add_member(member_id)

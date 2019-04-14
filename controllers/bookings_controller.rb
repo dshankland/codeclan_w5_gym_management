@@ -9,11 +9,18 @@ require('pry-byebug')
 post '/bookings' do
   booking = Booking.new(params)
   booking.save
+  gymclass = GymClass.find(params['gymclass_id'])
+  gymclass.decrease_spaces()
+  gymclass.update()
   redirect to("/classes/#{params['gymclass_id']}")
 end
 
 post '/bookings/:id/delete' do
   booking = Booking.find(params[:id])
   booking.delete()
+  gymclass = GymClass.find(params['gymclass_id'])
+  gymclass.increase_spaces()
+  gymclass.update()
+  redirect to("/classes/#{params['gymclass_id']}")
   redirect back
 end

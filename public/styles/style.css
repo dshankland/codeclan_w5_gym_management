@@ -1,0 +1,70 @@
+:root {
+  --my-font-family-1: "Rokkitt";
+  --my-font-family-2: serif;
+}
+
+body {
+  /* background:linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url(https://i.pinimg.com/474x/59/6d/1c/596d1cc9beb820e51c14b55e40317a74--logo-design-hogwarts-logo-printable.jpg) no-repeat center fixed; */
+  /* background-size: cover; */
+}
+
+html, body {
+  font-family: var(--my-font-family-1), var(--my-font-family-2), Palatino, serif;
+}
+
+p {
+  font-family: var(--my-font-family-1), var(--my-font-family-2), Palatino, serif;
+}
+
+.student-form {
+  display: flex;
+  flex-direction: column;
+  width: 20em;
+}
+
+.header {
+  /* background:linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url("/images/logo.png") no-repeat fixed; */
+  background:url("/images/logo.png") no-repeat center;
+  background-color: #ffffff;
+  padding: 1px;
+  text-align: center;
+  height: 120px;
+  background-size: 100px 100px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #ffffff;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+li {
+  float: left;
+  font-family: var(--my-font-family-1), var(--my-font-family-2), Palatino, serif;
+}
+
+li a {
+  display: inline;
+  color: DarkSlateGrey;
+  text-align: center;
+  padding: 0.25em 2em;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #66ccff;
+}
+
+.active {
+  background-color: #b3e6ff;
+}
+
+table {
+  border: 1px solid black;
+  background: #ffffff;
+}

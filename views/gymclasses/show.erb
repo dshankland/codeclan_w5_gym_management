@@ -17,6 +17,9 @@
     <td><%= booking.member_name %></td>
     <td>
       <form method="post" action="/bookings/<%= booking.id %>/delete">
+        <select name="gymclass_id" hidden>
+          <option value="<%= @gymclass.id %>" selected><%= @gymclass.name %></option>
+        </select>
         <input type="submit" value="Remove"/>
       </form>
     </td>
