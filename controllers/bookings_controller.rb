@@ -12,7 +12,8 @@ post '/bookings' do
   gymclass = GymClass.find(params['gymclass_id'])
   gymclass.decrease_spaces()
   gymclass.update()
-  redirect to("/classes/#{params['gymclass_id']}")
+  # redirect to("/classes/#{params['gymclass_id']}")
+  redirect to("/classes/#{params['gymclass_id']}/edit")
 end
 
 post '/bookings/:id/delete' do
@@ -21,6 +22,7 @@ post '/bookings/:id/delete' do
   gymclass = GymClass.find(params['gymclass_id'])
   gymclass.increase_spaces()
   gymclass.update()
-  redirect to("/classes/#{params['gymclass_id']}")
+  # redirect to("/classes/#{params['gymclass_id']}")
+  redirect to("/classes/#{params['gymclass_id']}/edit")
   # redirect back
 end

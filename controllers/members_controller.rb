@@ -37,5 +37,6 @@ end
 post '/members/:id' do
   member = Member.new(params)
   member.update
-  redirect to "/members/#{params['id']}"
+  # redirect to "/members/#{params['id']}"
+  redirect to "/members"
 end

@@ -9,3 +9,42 @@
   <button type="cancel" onclick="window.location='/classes';return false;">Cancel</button>
   <input type="submit" value="Update Class"/>
 </form>
+
+<form method="post" action="/classes/<%= @gymclass.id %>/delete">
+  <input type="submit" value="Delete Class"/>
+</form>
+
+<h3>Members:</h3>
+<table class="gymclass-booking-member-table">
+  <tr>
+    <th>Name</th>
+    <th></th>
+  </tr>
+<% @gymclass.bookings.each do |booking| %>
+<tr>
+    <td><%= booking.member_name %></td>
+    <td>
+      <form method="post" action="/bookings/<%= booking.id %>/delete">
+        <select name="gymclass_id" hidden>
+          <option value="<%= @gymclass.id %>" selected><%= @gymclass.name %></option>
+        </select>
+        <input type="submit" value="Remove"/>
+      </form>
+    </td>
+</tr>
+<% end %>
+</table>
+
+<h3>Add Members:</h3>
+
+<form method="POST" action="/bookings">
+  <select name="member_id">
+    <% @gymclass.available_members.each do |member| %>
+    <option value="<%= member.id %>" ><%= member.name %></option>
+    <% end %>
+  </select>
+  <select name="gymclass_id" hidden>
+    <option value="<%= @gymclass.id %>" selected><%= @gymclass.name %></option>
+  </select>
+  <input type="submit">
+</form>

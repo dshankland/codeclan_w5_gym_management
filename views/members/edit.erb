@@ -12,3 +12,13 @@
     <input type="submit" value="Update Member"/>
   </div>
 </form>
+<form method="post" action="/members/<%= @member.id %>/delete" class="member_delete">
+  <input type="submit" value="Delete"/>
+</form>
+
+<h3>Classes:</h3>
+<ul class="member-class-list">
+  <% @member.gymclasses.each do |gymclass| %>
+  <li class="member-class-list"><%= gymclass.time.strftime('%F %R') %> <%= gymclass.name %></li>
+  <% end %>
+</ul>

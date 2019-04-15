@@ -37,5 +37,6 @@ end
 post '/classes/:id' do
   gymclass = GymClass.new(params)
   gymclass.update
-  redirect to "/classes/#{params['id']}"
+  # redirect to "/classes/#{params['id']}"
+  redirect to "/classes"
 end
