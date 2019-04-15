@@ -8,32 +8,54 @@ Booking.delete_all()
 Member.delete_all()
 GymClass.delete_all()
 
-member1 = Member.new({'name' => 'Darren Shankland', 'premium' => false})
-member1.save()
-member2 = Member.new({'name' => 'Ann Campbell', 'premium' => true})
-member2.save()
-member3 = Member.new({'name' => 'Arnold Schwarzenneger', 'premium' => true})
-member3.save()
+membership_type = [true, false]
+member_names = ['Darren Shankland', 'Ann Campbell', 'Arnold Schwarzenegger', 'Fishy Bob', 'Sandy Beach', 'Billy Joe', 'Joey Bob']
+for member_name in member_names
+  member1 = Member.new({'name' => member_name, 'premium' => membership_type.sample()})
+  member1.save()
+end
 
+gymclass_names = ['Body Combat', 'Yoga', 'Weights', 'Spin', 'Pump', 'Bootcamp', 'Kettlebells', 'Circuits']
 
-time1 = Time.parse('2019-04-12 17:00 +0100')
-gymclass1 = GymClass.new({'name' => 'Body Combat', 'time' => time1, 'spaces' => 20})
-gymclass1.save()
-time2 = Time.parse('2019-04-13 09:00 +0100')
-gymclass2 = GymClass.new({'name' => 'Yoga', 'time' => time2, 'spaces' => 10})
-gymclass2.save()
-time3 = Time.parse('2019-04-14 10:00 +0100')
-gymclass3 = GymClass.new({'name' => 'Weights', 'time' => time3, 'spaces' => 15})
-gymclass3.save()
+# Every day at 07:00
+starttime7 = Time.parse('2019-04-15 07:00 +0100')
+for i in 0..6 do
+  newtime = starttime7 + (60*60*24*i)
+  gymclass1 = GymClass.new({'name' => gymclass_names[4], 'time' => newtime, 'spaces' => 10})
+  gymclass1.save()
+end
 
+# Every day at 10:00
+starttime10 = starttime7 + (60*60*3)
+for i in 0..6 do
+  newtime = starttime10 + (60*60*24*i)
+  gymclass1 = GymClass.new({'name' => gymclass_names.sample(), 'time' => newtime, 'spaces' => 10})
+  gymclass1.save()
+end
 
-booking1 = Booking.new({'member_id' => member1.id, 'gymclass_id' => gymclass1.id})
-booking1.save()
-booking2 = Booking.new({'member_id' => member2.id, 'gymclass_id' => gymclass2.id})
-booking2.save()
-booking3 = Booking.new({'member_id' => member3.id, 'gymclass_id' => gymclass3.id})
-booking3.save()
+# Every day at 13:00
+starttime13 = starttime10 + (60*60*3)
+for i in 0..6 do
+  newtime = starttime13 + (60*60*24*i)
+  gymclass1 = GymClass.new({'name' => gymclass_names.sample(), 'time' => newtime, 'spaces' => 10})
+  gymclass1.save()
+end
 
+# Every day at 17:00
+starttime17 = starttime13 + (60*60*2)
+for i in 0..6 do
+  newtime = starttime17 + (60*60*24*i)
+  gymclass1 = GymClass.new({'name' => gymclass_names.sample(), 'time' => newtime, 'spaces' => 10})
+  gymclass1.save()
+end
+
+# Every day at 19:00
+starttime19 = starttime17 + (60*60*2)
+for i in 0..6 do
+  newtime = starttime19 + (60*60*24*i)
+  gymclass1 = GymClass.new({'name' => gymclass_names.sample(), 'time' => newtime, 'spaces' => 10})
+  gymclass1.save()
+end
 
 binding.pry
 

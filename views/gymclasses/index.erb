@@ -1,6 +1,6 @@
 <button type="button" onclick="window.location='/classes/new';return false;">New Class</button>
 
-<table>
+<table hidden>
   <tr>
     <th>Name</th>
     <th>Date/Time</th>
@@ -10,7 +10,7 @@
   <% for gymclass in @gymclasses %>
   <tr>
     <td><a href="/classes/<%= gymclass.id %>"><%= gymclass.name %></a></td>
-    <td><%= gymclass.time.strftime('%F %T') %></td>
+    <td><%= gymclass.time.strftime('%F %R') %></td>
     <td><%= gymclass.spaces %></td>
     <td>
       <form method="post" action="/classes/<%= gymclass.id %>/delete">
@@ -20,3 +20,104 @@
   </tr>
   <% end %>
 </table>
+
+<div class="schedule-grid">
+  <div class="schedule-column">
+    <div class="schedule-title">Today
+      <% gymclasses0 = GymClass.date_range("0") %>
+      <% for gymclass in gymclasses0 %>
+      <div class="schedule-card">
+        <a  href="/classes/<%= gymclass.id %>">
+        <div class="schedule-card-name"><%= gymclass.name %></div>
+        <div class="schedule-card-time"><%= gymclass.time.strftime('%H:%M%P') %></div>
+        <div class="schedule-card-spaces">Spaces: <%= gymclass.spaces %></div>
+        </a>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="schedule-column">
+    <div class="schedule-title">Tomorrow
+      <% gymclasses0 = GymClass.date_range("1") %>
+      <% for gymclass in gymclasses0 %>
+      <div class="schedule-card">
+        <a  href="/classes/<%= gymclass.id %>">
+        <div class="schedule-card-name"><%= gymclass.name %></div>
+        <div class="schedule-card-time"><%= gymclass.time.strftime('%H:%M%P') %></div>
+        <div class="schedule-card-spaces">Spaces: <%= gymclass.spaces %></div>
+        </a>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="schedule-column">
+    <div class="schedule-title"><%= (Time.now()+(60*60*24*2)).strftime('%a %e %b') %>
+      <% gymclasses0 = GymClass.date_range("2") %>
+      <% for gymclass in gymclasses0 %>
+      <div class="schedule-card">
+        <a  href="/classes/<%= gymclass.id %>">
+        <div class="schedule-card-name"><%= gymclass.name %></div>
+        <div class="schedule-card-time"><%= gymclass.time.strftime('%H:%M%P') %></div>
+        <div class="schedule-card-spaces">Spaces: <%= gymclass.spaces %></div>
+        </a>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="schedule-column">
+    <div class="schedule-title"><%= (Time.now()+(60*60*24*3)).strftime('%a %e %b') %>
+      <% gymclasses0 = GymClass.date_range("3") %>
+      <% for gymclass in gymclasses0 %>
+      <div class="schedule-card">
+        <a  href="/classes/<%= gymclass.id %>">
+        <div class="schedule-card-name"><%= gymclass.name %></div>
+        <div class="schedule-card-time"><%= gymclass.time.strftime('%H:%M%P') %></div>
+        <div class="schedule-card-spaces">Spaces: <%= gymclass.spaces %></div>
+        </a>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="schedule-column">
+    <div class="schedule-title"><%= (Time.now()+(60*60*24*4)).strftime('%a %e %b') %>
+      <% gymclasses0 = GymClass.date_range("4") %>
+      <% for gymclass in gymclasses0 %>
+      <div class="schedule-card">
+        <a  href="/classes/<%= gymclass.id %>">
+        <div class="schedule-card-name"><%= gymclass.name %></div>
+        <div class="schedule-card-time"><%= gymclass.time.strftime('%H:%M%P') %></div>
+        <div class="schedule-card-spaces">Spaces: <%= gymclass.spaces %></div>
+        </a>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="schedule-column">
+    <div class="schedule-title"><%= (Time.now()+(60*60*24*5)).strftime('%a %e %b') %>
+      <% gymclasses0 = GymClass.date_range("5") %>
+      <% for gymclass in gymclasses0 %>
+      <div class="schedule-card">
+        <a  href="/classes/<%= gymclass.id %>">
+        <div class="schedule-card-name"><%= gymclass.name %></div>
+        <div class="schedule-card-time"><%= gymclass.time.strftime('%H:%M%P') %></div>
+        <div class="schedule-card-spaces">Spaces: <%= gymclass.spaces %></div>
+        </a>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="schedule-column">
+    <div class="schedule-title"><%= (Time.now()+(60*60*24*6)).strftime('%a %e %b') %>
+      <% gymclasses0 = GymClass.date_range("6") %>
+      <% for gymclass in gymclasses0 %>
+      <div class="schedule-card">
+        <a  href="/classes/<%= gymclass.id %>">
+        <div class="schedule-card-name"><%= gymclass.name %></div>
+        <div class="schedule-card-time"><%= gymclass.time.strftime('%H:%M%P') %></div>
+        <div class="schedule-card-spaces">Spaces: <%= gymclass.spaces %></div>
+        </a>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

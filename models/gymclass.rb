@@ -80,14 +80,19 @@ class GymClass
     # add some logic in here to check whether the class is peak, and only supply a list
     # of premium members
     # sql = "SELECT members.* FROM members;"
-    if is_peak()
-      sql = "SELECT * from members WHERE id NOT IN (SELECT member_id FROM bookings WHERE gymclass_id = $1) AND premium = TRUE;"
+    # also want to check to see if there are available spaces for the class, if noit - return an empty array
+    if @spaces > 0
+      if is_peak()
+        sql = "SELECT * from members WHERE id NOT IN (SELECT member_id FROM bookings WHERE gymclass_id = $1) AND premium = TRUE;"
+      else
+        sql = "SELECT * from members WHERE id NOT IN (SELECT member_id FROM bookings WHERE gymclass_id = $1);"
+      end
+      values = [@id]
+      results = SqlRunner.run(sql, values)
+      return results.map {|member| Member.new(member)}
     else
-      sql = "SELECT * from members WHERE id NOT IN (SELECT member_id FROM bookings WHERE gymclass_id = $1);"
+      return []
     end
-    values = [@id]
-    results = SqlRunner.run(sql, values)
-    return results.map {|member| Member.new(member)}
   end
 
   def decrease_spaces()
@@ -107,8 +112,8 @@ class GymClass
   # takes a parameter of days, 0 will return today, 1 tomorrow, etc..
   # bodged this to run using interpolation as values is not being detected for some reason
   def self.date_range(days)
-    sql = "SELECT * FROM gymclasses WHERE DATE_TRUNC('day',time) = CURRENT_DATE + interval '#{days} day'"
-    # values = [days]
+    sql = "SELECT * FROM gymclasses WHERE DATE_TRUNC('day',time) = CURRENT_DATE + interval '#{days} day' ORDER BY time"
+    values = [days]
     results = SqlRunner.run(sql)
     return results.map {|gymclass| GymClass.new(gymclass)}
   end

@@ -4,6 +4,40 @@
   --my-font-family-2: serif;
 }
 
+.schedule-card {
+  border: 1px solid black;
+  background: #ffffff;
+  text-align: center;
+  margin: 0.2em;
+  padding: 0.1em;
+  font-size: 0.7em;
+}
+
+.schedule-card a {
+  text-decoration: none;
+}
+
+/* Create four equal columns that floats next to each other */
+.schedule-column {
+  float: left;
+  width: 12%;
+  padding: 0.1em;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 900px) {
+  .column  {
+    width: 50%;
+  }
+}
+
 body {
   /* background:linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url(https://i.pinimg.com/474x/59/6d/1c/596d1cc9beb820e51c14b55e40317a74--logo-design-hogwarts-logo-printable.jpg) no-repeat center fixed; */
   /* background-size: cover; */
@@ -55,7 +89,7 @@ li.main-nav a {
   display: block;
   color: CornflowerBlue;
   text-align: center;
-  padding: 5px 10px;
+  padding: 0px 5px;
   text-decoration: none;
 }
 
@@ -67,7 +101,9 @@ li.main-nav a:hover {
   background-color: #dddddd;
 }
 
-table {
-  border: 1px solid black;
+.member-table {
+  border: 1px solid DarkSlateGrey;
   background: #ffffff;
+  margin: 1em;
+  padding: 0.2em;
 }

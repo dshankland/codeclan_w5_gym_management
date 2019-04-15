@@ -7,6 +7,6 @@
 <h3>Classes:</h3>
 <ul class="member-class-list">
   <% @member.gymclasses.each do |gymclass| %>
-  <li class="member-class-list"><%= gymclass.time.strftime('%F %T') %> <%= gymclass.name %></li>
+  <li class="member-class-list"><%= gymclass.time.strftime('%F %R') %> <%= gymclass.name %></li>
   <% end %>
 </ul>
