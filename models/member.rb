@@ -58,6 +58,7 @@ class Member
     return Member.new(results.first)
   end
 
+  # gymclasses returns all the gymclasses this member is booked into
   def gymclasses()
     sql = "SELECT gymclasses.* FROM gymclasses INNER JOIN bookings ON bookings.gymclass_id = gymclasses.id WHERE bookings.member_id = $1;"
     values = [@id]

@@ -61,6 +61,7 @@ class Booking
   #   SqlRunner.run(sql, values)
   # end
 
+  # member_name returns the member name for the booking. Useful for displaying members booked into a class
   def member_name()
     sql = "SELECT members.name FROM members INNER JOIN bookings ON bookings.member_id = members.id WHERE bookings.id = $1;"
     values = [@id]

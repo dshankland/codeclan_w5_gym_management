@@ -7,7 +7,7 @@
 /* Header and logo */
 .header {
   /* background:linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url("/images/logo.png") no-repeat fixed; */
-  background:url("/images/logo_black_new.png") no-repeat center, linear-gradient(to top right, black, darkslategrey) no-repeat center;
+  background:url("/images/logo_black_new.png") no-repeat center;
   background-color: #000000;
   padding: 1px;
   text-align: center;

@@ -62,6 +62,7 @@ class GymClass
     return GymClass.new(results.first)
   end
 
+  # get the members associated with this gymclass
   def members()
     sql = "SELECT members.* FROM members INNER JOIN bookings ON bookings.member_id = members.id WHERE bookings.gymclass_id = $1;"
     values = [@id]
@@ -69,6 +70,7 @@ class GymClass
     return results.map {|member| Member.new(member)}
   end
 
+  # get the bookings associated with this gymclass
   def bookings()
     sql = "SELECT * FROM bookings WHERE bookings.gymclass_id = $1;"
     values = [@id]
@@ -76,11 +78,11 @@ class GymClass
     return results.map {|booking| Booking.new(booking)}
   end
 
+  # provides a list of members not already booked into this gym class.
   def available_members()
-    # add some logic in here to check whether the class is peak, and only supply a list
-    # of premium members
-    # sql = "SELECT members.* FROM members;"
-    # also want to check to see if there are available spaces for the class, if noit - return an empty array
+    # added some logic in here to check whether the class is peak, and only supply a list
+    # of premium members. Also want to check to see if there are available spaces for the
+    # class, if not - return an empty array.
     if @spaces > 0
       if is_peak()
         sql = "SELECT * from members WHERE id NOT IN (SELECT member_id FROM bookings WHERE gymclass_id = $1) AND premium = TRUE;"
@@ -95,14 +97,17 @@ class GymClass
     end
   end
 
+  # remove 1 from available spaces - happens as part of booking
   def decrease_spaces()
     @spaces -= 1
   end
 
+  # add 1 to available spaces - happens when booking is deleted
   def increase_spaces()
     @spaces += 1
   end
 
+  # check the time of the gymclass, return true if time between 7am-9am or 5pm-8pm
   def is_peak()
     @time.hour.between?(7,8) || @time.hour.between?(17,19)
   end
@@ -110,7 +115,7 @@ class GymClass
   # trying to write a function that will bring back a specific days
   # gym class schedule, to aid building a schedule page
   # takes a parameter of days, 0 will return today, 1 tomorrow, etc..
-  # bodged this to run using interpolation as values is not being detected for some reason
+  # bodged this to run using interpolation as values $1 is not being detected for some reason
   def self.date_range(days)
     sql = "SELECT * FROM gymclasses WHERE DATE_TRUNC('day',time) = CURRENT_DATE + interval '#{days} day' ORDER BY time"
     values = [days]
@@ -118,6 +123,8 @@ class GymClass
     return results.map {|gymclass| GymClass.new(gymclass)}
   end
 
+  # decided to have the bookings taken care of by the booking controller
+  #
   # def add_member(member_id)
   #   Booking.new({'member_id' => member_id, 'gymclass_id' => @id}).save()
   # end
