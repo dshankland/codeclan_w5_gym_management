@@ -9,7 +9,7 @@ Member.delete_all()
 GymClass.delete_all()
 
 membership_type = [true, false]
-member_names = ['Darren Shankland', 'Ann Campbell', 'Arnold Schwarzenegger', 'Fishy Bob', 'Sandy Beach', 'Billy Joe', 'Joey Bob']
+member_names = ['Darren Shankland', 'Ann Campbell', 'Arnold Schwarzenegger', 'Fishy Bob', 'Sandy Beach', 'Billy Joe', 'Joey Bob', 'Bobby Joe']
 for member_name in member_names
   member1 = Member.new({'name' => member_name, 'premium' => membership_type.sample()})
   member1.save()
@@ -18,7 +18,7 @@ end
 gymclass_names = ['Body Combat', 'Yoga', 'Weights', 'Spin', 'Pump', 'Bootcamp', 'Kettlebells', 'Circuits']
 
 # Every day at 07:00
-starttime7 = Time.parse('2019-04-15 07:00 +0100')
+starttime7 = Time.parse('07:00', Time.now())
 for i in 0..6 do
   newtime = starttime7 + (60*60*24*i)
   gymclass1 = GymClass.new({'name' => gymclass_names[4], 'time' => newtime, 'spaces' => 10})
