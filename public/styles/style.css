@@ -5,7 +5,7 @@
 }
 
 .schedule-card {
-  border: 1px solid black;
+  border: 1px solid LightSlateGrey;
   background: #ffffff;
   text-align: center;
   margin: 0.2em;
@@ -13,28 +13,43 @@
   font-size: 0.7em;
 }
 
+.schedule-card-full {
+  background: #ff6347;
+}
+
+.schedule-card-name {
+  font-weight: bold;
+  font-size: 1.2em
+}
+
+.schedule-card-peak {
+  font-weight: bold;
+  font-size: 0.8em
+}
+
 .schedule-card a {
   text-decoration: none;
 }
 
-/* Create four equal columns that floats next to each other */
+/* Create seven equal columns that floats next to each other */
 .schedule-column {
   float: left;
   width: 12%;
   padding: 0.1em;
+  text-align: center;
 }
 
 /* Clear floats after the columns */
-.row:after {
+.schedule-grid:after {
   content: "";
   display: table;
   clear: both;
 }
 
 /* Responsive layout - makes a two column-layout instead of four columns */
-@media screen and (max-width: 900px) {
-  .column  {
-    width: 50%;
+@media screen and (max-width: 600px) {
+  .schedule-column  {
+    width: 95%;
   }
 }
 
@@ -54,9 +69,41 @@ p {
 }
 
 .member-form, .gymclass-form {
+  font-family: var(--my-font-family-1), var(--my-font-family-2);
   display: flex;
   flex-direction: column;
+  width: 18em;
+  margin: 2em;
+  border: 1px solid DarkSlateGrey;
+}
+
+.member-form-name, .member-form-membership, .member-form-buttons {
+  display: flex;
+  flex-direction: row;
+  margin: 0.5em;
+  width: 17em;
+}
+
+.new-member-button, .new-class-button {
+  text-align: center;
+  padding: 2px 2px;
+  margin: 1em 1em 0em 2em;
+  height: 1.6em;
+  width: 7em;
+  font-size: 1em;
+}
+
+.member-table {
   width: 20em;
+  border: 1px solid DarkSlateGrey;
+  background: #ffffff;
+  margin: 2em;
+  padding: 0.2em;
+  text-align: left;
+}
+
+.member-table td{
+  font-size: 0.8em;
 }
 
 .header {
@@ -101,9 +148,5 @@ li.main-nav a:hover {
   background-color: #dddddd;
 }
 
-.member-table {
-  border: 1px solid DarkSlateGrey;
-  background: #ffffff;
-  margin: 1em;
-  padding: 0.2em;
-}
+
+

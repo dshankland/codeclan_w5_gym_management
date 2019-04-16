@@ -1,9 +1,17 @@
-<form method="post" action="/members" class="member-form">
-  <label for="name-field">Name:</label>
-  <input type="text" name="name" id="name-field" required />
-  <label for="premium">Membership:</label>
-  <input type="radio" name="premium" value="t">Premium<br>
-  <input type="radio" name="premium" value="f" checked>Standard<br>
-  <button type="cancel" onclick="window.location='/members';return false;">Cancel</button>
-  <input type="submit" value="Add Member">
+<form method="post" action="/members">
+  <div class="member-form">
+    <div class="member-form-name">
+      <label for="name-field">Name:</label>
+      <input type="text" name="name" id="name-field" required />
+    </div>
+    <div class="member-form-membership">
+      <label for="premium">Membership:</label>
+      <input type="radio" name="premium" value="t">Premium
+      <input type="radio" name="premium" value="f" checked>Standard
+    </div>
+    <div class="member-form-buttons">
+      <button type="cancel" onclick="window.location='/members';return false;">Cancel</button>
+      <input type="submit" value="Add Member">
+    </div>
+  </div>
 </form>

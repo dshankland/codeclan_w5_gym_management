@@ -1,10 +1,20 @@
-<form method="post" action="/classes" class="gymclass-form">
-  <label for="name-field">Name:</label>
-  <input type="text" name="name" id="name-field" required />
-  <label for="time">Time:</label>
-  <input type="datetime-local" name="time" id="time-field" value="<%= Time.now().strftime('%FT%T') %>" required />
-  <label for="spaces">Spaces:</label>
-  <input type="number" name="spaces" id="spaces" min="0" required/>
-  <button type="cancel" onclick="window.location='/classes';return false;">Cancel</button>
-  <input type="submit" value="Add Class">
+<form method="post" action="/classes">
+  <div class="gymclass-form">
+    <div class="gymclass-form-name">
+      <label for="name-field">Name:</label>
+      <input type="text" name="name" id="name-field" required />
+    </div>
+    <div class="gymclass-form-time">
+      <label for="time">Time:</label>
+      <input type="datetime-local" name="time" id="time-field" value="<%= Time.now().strftime('%FT%T') %>" required />
+    </div>
+    <div class="gymclass-form-spaces">
+      <label for="spaces">Spaces:</label>
+      <input type="number" name="spaces" id="spaces" min="0" required/>
+    </div>
+    <div class="gymclass-form-buttons">
+      <button type="cancel" onclick="window.location='/classes';return false;">Cancel</button>
+      <input type="submit" value="Add Class">
+    </div>
+  </div>
 </form>

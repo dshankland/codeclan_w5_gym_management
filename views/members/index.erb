@@ -1,21 +1,23 @@
-
-<button type="button" onclick="window.location='/members/new';return false;">New Member</button>
-
-<table class="member-table">
-  <tr>
-    <th>Name</th>
-    <th>Membership</th>
-    <!-- <th>Delete</th> -->
-  </tr>
-  <% for member in @members %>
-  <tr>
-    <td><a href="/members/<%= member.id %>/edit"><%= member.name %></a></td>
-    <td><%= member.premium ? "Premium" : "Standard" %></td>
-    <!-- <td>
-      <form method="post" action="/members/<%= member.id %>/delete">
-        <input type="submit" value="Delete"/>
-      </form>
-    </td> -->
-  </tr>
-  <% end %>
-</table>
+<div class="member-index-new-member-button">
+  <button class="new-member-button" type="button" onclick="window.location='/members/new';return false;">New Member</button>
+</div>
+<div class="member-index">
+  <table class="member-table">
+    <tr>
+      <th>Name</th>
+      <th>Membership</th>
+      <!-- <th>Delete</th> -->
+    </tr>
+    <% for member in @members %>
+    <tr>
+      <td><a href="/members/<%= member.id %>/edit"><%= member.name %></a></td>
+      <td><%= member.premium ? "Premium" : "Standard" %></td>
+      <!-- <td>
+        <form method="post" action="/members/<%= member.id %>/delete">
+          <input type="submit" value="Delete"/>
+        </form>
+      </td> -->
+    </tr>
+    <% end %>
+  </table>
+  </div
