@@ -1,15 +1,16 @@
+<div class="new-member-title">Add a new member</div>
 <form method="post" action="/members">
   <div class="member-form">
-    <div class="member-form-name">
+    <div class="member-form-row">
       <label for="name-field">Name:</label>
       <input type="text" name="name" id="name-field" required />
     </div>
-    <div class="member-form-membership">
+    <div class="member-form-row">
       <label for="premium">Membership:</label>
       <input type="radio" name="premium" value="t">Premium
       <input type="radio" name="premium" value="f" checked>Standard
     </div>
-    <div class="member-form-buttons">
+    <div class="member-form-row-buttons">
       <button type="cancel" onclick="window.location='/members';return false;">Cancel</button>
       <input type="submit" value="Add Member">
     </div>

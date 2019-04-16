@@ -1,5 +1,5 @@
-<div class="member-index-new-member-button">
-  <button type="button" onclick="window.location='/classes/new';return false;">New Class</button>
+<div class="gymclass-index-new-gymclass-button">
+  <button class="new-gymclass-button" type="button" onclick="window.location='/classes/new';return false;">New Class</button>
 </div>
 
 <table hidden>
@@ -29,7 +29,7 @@
     <div class="schedule-title"><%= i == 0 ? "Today" : i == 1 ? "Tomorrow" : "#{(Time.now()+(60*60*24*i)).strftime('%a %e %b')}" %>
       <% gymclasses0 = GymClass.date_range("#{i}") %>
       <% for gymclass in gymclasses0 %>
-      <div class="schedule-card <%= 'schedule-card-full' if gymclass.spaces == 0 %>">
+      <div class="schedule-card <%= gymclass.spaces == 0 ? 'schedule-card-full' : gymclass.is_peak() ? 'schedule-card-ispeak' : '' %>">
         <a  href="/classes/<%= gymclass.id %>/edit">
         <div class="schedule-card-name"><%= gymclass.name %></div>
         <div class="schedule-card-time"><%= gymclass.time.strftime('%l:%M%P') %></div>

@@ -4,17 +4,82 @@
   --my-font-family-2: serif;
 }
 
+/* Header and logo */
+.header {
+  /* background:linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url("/images/logo.png") no-repeat fixed; */
+  background:url("/images/logo_black.png") no-repeat center;
+  background-color: #000000;
+  padding: 1px;
+  text-align: center;
+  height: 100px;
+  background-size: 100px 100px;
+}
+
+/* Navigation menu bar */
+ul.main-nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #000000;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  font-size: 1.2em;
+}
+
+li.main-nav {
+  float: left;
+  font-family: var(--my-font-family-1), var(--my-font-family-2);
+}
+
+li.main-nav a {
+  display: block;
+  color: CornflowerBlue;
+  text-align: center;
+  padding: 0px 5px;
+  text-decoration: none;
+}
+
+li.main-nav a:hover {
+  background-color: #dddddd;
+}
+
+.active {
+  background-color: #cccccc;
+}
+
+/*  main page stylings */
+body {
+  /* background:linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url(https://i.pinimg.com/474x/59/6d/1c/596d1cc9beb820e51c14b55e40317a74--logo-design-hogwarts-logo-printable.jpg) no-repeat center fixed; */
+  /* background-size: cover; */
+  background-color: #dddddd;
+}
+
+html, body {
+  font-family: var(--my-font-family-1), var(--my-font-family-2);
+  margin: 0;
+}
+
+p {
+  font-family: var(--my-font-family-1), var(--my-font-family-2);
+}
+
 .schedule-card {
   border: 1px solid LightSlateGrey;
-  background: #ffffff;
-  text-align: center;
-  margin: 0.2em;
-  padding: 0.1em;
-  font-size: 0.7em;
+  background: #eeeeee;
+  text-align: left;
+  margin: 0.2em 0.1em 0.4em 0.5em;
+  padding: 0.5em;
+  font-size: 1em;
 }
 
 .schedule-card-full {
-  background: #ff6347;
+  background: #d3ffb4;
+}
+
+.schedule-card-ispeak {
+  background: #ffe8b4;
 }
 
 .schedule-card-name {
@@ -24,7 +89,7 @@
 
 .schedule-card-peak {
   font-weight: bold;
-  font-size: 0.8em
+  font-size: 0.8em;
 }
 
 .schedule-card a {
@@ -46,107 +111,87 @@
   clear: both;
 }
 
-/* Responsive layout - makes a two column-layout instead of four columns */
+/* Responsive layout - makes a single column-layout instead of seven columns */
 @media screen and (max-width: 600px) {
   .schedule-column  {
     width: 95%;
   }
 }
 
-body {
-  /* background:linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url(https://i.pinimg.com/474x/59/6d/1c/596d1cc9beb820e51c14b55e40317a74--logo-design-hogwarts-logo-printable.jpg) no-repeat center fixed; */
-  /* background-size: cover; */
-  background-color: #dddddd;
-}
-
-html, body {
-  font-family: var(--my-font-family-1), var(--my-font-family-2);
-  margin: 0;
-}
-
-p {
-  font-family: var(--my-font-family-1), var(--my-font-family-2);
-}
-
 .member-form, .gymclass-form {
   font-family: var(--my-font-family-1), var(--my-font-family-2);
-  display: flex;
-  flex-direction: column;
-  width: 18em;
-  margin: 2em;
-  border: 1px solid DarkSlateGrey;
+  display: inline-block;
+  width: 30em;
+  margin: 0em 1em 0em 0.5em;
+  border: 1px solid LightSlateGrey;
+  font-size: 1.1em;
+  padding: 2px 2px;
+  height: 7em;
 }
 
-.member-form-name, .member-form-membership, .member-form-buttons {
-  display: flex;
-  flex-direction: row;
-  margin: 0.5em;
-  width: 17em;
+.gymclass-form label, .member-form label{
+  font-size: 1.2em;
 }
 
-.new-member-button, .new-class-button {
+.gymclass-form input[type="text"], input[type=datetime-local], input[type="number"] {
+  font-size: 1em;
+  width: 300px
+}
+
+.gymclass-form button, .member-form button, .gymclass-form input[type="submit"], .member-form input[type="submit"]{
   text-align: center;
   padding: 2px 2px;
-  margin: 1em 1em 0em 2em;
+  margin: 0.5em;
   height: 1.6em;
   width: 7em;
   font-size: 1em;
+  border: 1px solid LightSlateGrey;
 }
 
+/* .member-form-row, .member-form-row-buttons {
+  display: flex;
+  flex-direction: row;
+  margin: 0.5em;
+  width: 22em;
+} */
+/* .member-form-row-buttons {
+  width: 310px;
+  padding: 20px 0 20px 0;
+  display: flex;
+  justify-content: space-between;
+} */
+
+.new-member-button, .new-gymclass-button {
+  text-align: center;
+  padding: 2px 2px;
+  margin: 0.5em;
+  height: 1.6em;
+  width: 7em;
+  font-size: 1em;
+  border: 1px solid LightSlateGrey;
+}
+
+/* Member index */
 .member-table {
-  width: 20em;
-  border: 1px solid DarkSlateGrey;
+  width: 30em;
+  border: 1px solid LightSlateGrey;
   background: #ffffff;
-  margin: 2em;
-  padding: 0.2em;
+  margin: 0 0.5em;
+  padding: 0.3em;
   text-align: left;
 }
 
+.member-table th{
+  font-size: 1.1em;
+  background: #eeeeee;
+}
+
 .member-table td{
-  font-size: 0.8em;
+  font-size: 1em;
 }
 
-.header {
-  /* background:linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url("/images/logo.png") no-repeat fixed; */
-  background:url("/images/logo_black.png") no-repeat center;
-  background-color: #000000;
-  padding: 1px;
-  text-align: center;
-  height: 100px;
-  background-size: 100px 100px;
+.new-member-title, .edit-member-title, .new-gymclass-title, .edit-gymclass-title {
+  margin: 0.3em 0.3em 0em 0.5em;
+  padding: 2px;
+  font-size: 1.5em;
 }
-
-ul.main-nav {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #000000;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-}
-
-li.main-nav {
-  float: left;
-  font-family: var(--my-font-family-1), var(--my-font-family-2);
-}
-
-li.main-nav a {
-  display: block;
-  color: CornflowerBlue;
-  text-align: center;
-  padding: 0px 5px;
-  text-decoration: none;
-}
-
-li.main-nav a:hover {
-  background-color: #eeeeee;
-}
-
-.active {
-  background-color: #dddddd;
-}
-
-
-
