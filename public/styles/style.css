@@ -42,11 +42,11 @@ li.main-nav a {
 }
 
 li.main-nav a:hover {
-  background-color: #dddddd;
+  background-color: #eeeeee;
 }
 
 .active {
-  background-color: #cccccc;
+  background-color: #dddddd;
 }
 
 /*  main page stylings */
@@ -121,9 +121,10 @@ p {
 .member-form, .gymclass-form {
   font-family: var(--my-font-family-1), var(--my-font-family-2);
   display: inline-block;
-  width: 30em;
+  width: 24em;
   margin: 0em 1em 0em 0.5em;
   border: 1px solid LightSlateGrey;
+  background: #eeeeee;
   font-size: 1.1em;
   padding: 2px 2px;
   height: 7em;
@@ -138,6 +139,22 @@ p {
   width: 300px
 }
 
+.edit-gymclass-members select {
+  margin: 0em 1em 0em 0.5em;
+  font-size: 1em;
+  width: 255px
+}
+
+.member-form input[type="text"] {
+  font-size: 1em;
+  width: 300px
+}
+
+.member-form input[type="radio"] {
+  font-size: 1em;
+  width: 50px
+}
+
 .gymclass-form button, .member-form button, .gymclass-form input[type="submit"], .member-form input[type="submit"]{
   text-align: center;
   padding: 2px 2px;
@@ -147,19 +164,6 @@ p {
   font-size: 1em;
   border: 1px solid LightSlateGrey;
 }
-
-/* .member-form-row, .member-form-row-buttons {
-  display: flex;
-  flex-direction: row;
-  margin: 0.5em;
-  width: 22em;
-} */
-/* .member-form-row-buttons {
-  width: 310px;
-  padding: 20px 0 20px 0;
-  display: flex;
-  justify-content: space-between;
-} */
 
 .new-member-button, .new-gymclass-button {
   text-align: center;
@@ -172,10 +176,10 @@ p {
 }
 
 /* Member index */
-.member-table {
+.member-table, .gymclass-booking-member-table {
   width: 30em;
   border: 1px solid LightSlateGrey;
-  background: #ffffff;
+  background: #eeeeee;
   margin: 0 0.5em;
   padding: 0.3em;
   text-align: left;
@@ -183,7 +187,7 @@ p {
 
 .member-table th{
   font-size: 1.1em;
-  background: #eeeeee;
+  background: #dddddd;
 }
 
 .member-table td{

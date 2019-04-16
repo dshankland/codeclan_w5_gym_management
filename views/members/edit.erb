@@ -1,21 +1,17 @@
-<div class="edit-member-title">Edit <%= @member.name %></div>
 <div class="edit-member-box">
+  <div class="edit-member-title">Edit <%= @member.name %></div>
   <form method="POST" action="/members/<%= @member.id %>" class="member-form">
-    <div>
-      <div>
-        <label for="name">Name:</label>
-        <input type="text" name="name" id="name" value="<%= @member.name %>" required />
-      </div>
-      <label for="premium">Membership:</label>
-      <input type="radio" name="premium" value="t" <%= "checked" if @member.premium == true %>>Premium<br>
-      <input type="radio" name="premium" value="f" <%= "checked" if @member.premium == false %>>Standard<br>
-      <button class="new-member-button" type="cancel" onclick="window.location='/members';return false;">Cancel</button>
-      <input class="new-member-button" type="submit" value="Update"/>
-    </form>
-    <form method="post" action="/members/<%= @member.id %>/delete" class="member_delete">
-      <input class="new-member-button" type="submit" value="Delete"/>
-    </form>
-  </div>
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name" value="<%= @member.name %>" required />
+    <label for="premium">Membership:</label>
+    <input type="radio" name="premium" value="t" <%= "checked" if @member.premium == true %>>Premium
+    <input type="radio" name="premium" value="f" <%= "checked" if @member.premium == false %>>Standard
+    <button class="new-member-button" type="cancel" onclick="window.location='/members';return false;">Cancel</button>
+    <input class="new-member-button" type="submit" value="Update"/>
+  </form>
+<form method="post" action="/members/<%= @member.id %>/delete" class="member_delete">
+  <input class="new-member-button" type="submit" value="Delete"/>
+</form>
 </div>
 
 <div class="edit-member-title">Classes:</div>

@@ -1,57 +1,62 @@
-<div class="edit-gymclass-title">Edit <%= @gymclass.name %></div>
-<form class="gymclass-form" method="POST" action="/classes/<%= @gymclass.id %>">
-  <div class="gymclass-formrow">
-    <label for="name-field">Name:</label>
-    <input type="text" name="name" id="name-field" value="<%= @gymclass.name %>" required/>
-  </div>
-  <div class="gymclass-form-row">
-    <label for="time">Time:</label>
-    <input type="datetime-local" name="time" id="time-field" value="<%= @gymclass.time.strftime('%FT%T') %>" required />
-    <div class="gymclass-form-row">
-      <label for="spaces">Spaces:</label>
-      <input type="number" name="spaces" id="spaces" min="0" value="<%= @gymclass.spaces %>" required/>
+<div class="edit-gymclass">
+  <div class="edit-gymclass-info">
+    <div class="edit-gymclass-title">Edit <%= @gymclass.name %></div>
+    <form class="gymclass-form" method="POST" action="/classes/<%= @gymclass.id %>">
+      <div class="gymclass-formrow">
+        <label for="name-field">Name:</label>
+        <input type="text" name="name" id="name-field" value="<%= @gymclass.name %>" required/>
+      </div>
+      <div class="gymclass-form-row">
+        <label for="time">Time:</label>
+        <input type="datetime-local" name="time" id="time-field" value="<%= @gymclass.time.strftime('%FT%T') %>" required />
+        <div class="gymclass-form-row">
+          <label for="spaces">Spaces:</label>
+          <input type="number" name="spaces" id="spaces" min="0" value="<%= @gymclass.spaces %>" required/>
+        </div>
+        <div class="gymclass-form-row-buttons">
+          <button class="new-gymclass-button" onclick="window.location='/classes';return false;">Cancel</button>
+          <input class="new-gymclass-button" type="submit" value="Update Class"/>
+        </div>
+      </form>
+
+      <form method="post" action="/classes/<%= @gymclass.id %>/delete">
+        <input class="new-gymclass-button" type="submit" value="Delete Class"/>
+      </form>
     </div>
-    <div class="gymclass-form-row-buttons">
-      <button class="new-gymclass-button" onclick="window.location='/classes';return false;">Cancel</button>
-      <input class="new-gymclass-button" type="submit" value="Update Class"/>
-    </div>
-  </form>
 
-  <form method="post" action="/classes/<%= @gymclass.id %>/delete">
-    <input class="new-gymclass-button" type="submit" value="Delete Class"/>
-  </form>
-</div>
-
-<div class="edit-gymclass-title">Add Members:</div>
-<form method="POST" action="/bookings">
-  <select name="member_id">
-    <% @gymclass.available_members.each do |member| %>
-    <option value="<%= member.id %>" ><%= member.name %></option>
-    <% end %>
-  </select>
-  <select name="gymclass_id" hidden>
-    <option value="<%= @gymclass.id %>" selected><%= @gymclass.name %></option>
-  </select>
-  <input class="new-gymclass-button" type="submit" value="Add">
-</form>
-
-<div class="edit-gymclass-title">Members booked in:</div>
-<table class="gymclass-booking-member-table">
-  <tr>
-    <th></th>
-    <th></th>
-  </tr>
-<% @gymclass.bookings.each do |booking| %>
-<tr>
-    <td><%= booking.member_name %></td>
-    <td>
-      <form method="post" action="/bookings/<%= booking.id %>/delete">
+    <div class="edit-gymclass-members">
+      <div class="edit-gymclass-title">Add Members:</div>
+      <form class="add-members" method="POST" action="/bookings">
+        <select name="member_id" required>
+          <% @gymclass.available_members.each do |member| %>
+          <option value="<%= member.id %>" ><%= member.name %></option>
+          <% end %>
+        </select>
         <select name="gymclass_id" hidden>
           <option value="<%= @gymclass.id %>" selected><%= @gymclass.name %></option>
         </select>
-        <input class="new-gymclass-button" type="submit" value="Remove"/>
+        <input class="new-gymclass-button" type="submit" value="Add">
       </form>
-    </td>
-</tr>
-<% end %>
-</table>
+
+      <div class="edit-gymclass-title">Members booked in:</div>
+      <table class="gymclass-booking-member-table">
+        <tr>
+          <th></th>
+          <th></th>
+        </tr>
+        <% @gymclass.bookings.each do |booking| %>
+        <tr>
+          <td><%= booking.member_name %></td>
+          <td>
+            <form method="post" action="/bookings/<%= booking.id %>/delete">
+              <select name="gymclass_id" hidden>
+                <option value="<%= @gymclass.id %>" selected><%= @gymclass.name %></option>
+              </select>
+              <input class="new-gymclass-button" type="submit" value="Remove"/>
+            </form>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
