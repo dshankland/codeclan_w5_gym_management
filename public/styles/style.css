@@ -7,12 +7,12 @@
 /* Header and logo */
 .header {
   /* background:linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url("/images/logo.png") no-repeat fixed; */
-  background:url("/images/logo_black.png") no-repeat center;
+  background:url("/images/logo_black_new.png") no-repeat center, linear-gradient(to top right, black, darkslategrey) no-repeat center;
   background-color: #000000;
   padding: 1px;
   text-align: center;
   height: 100px;
-  background-size: 100px 100px;
+  background-size: 100px 100px, auto;
 }
 
 /* Navigation menu bar */
@@ -75,11 +75,11 @@ p {
 }
 
 .schedule-card-full {
-  background: #d3ffb4;
+  background: #ecf9f2;
 }
 
 .schedule-card-ispeak {
-  background: #ffe8b4;
+  background: #fff5cc;
 }
 
 .schedule-card-name {
