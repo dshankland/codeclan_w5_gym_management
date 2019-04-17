@@ -18,11 +18,11 @@
           <input class="new-gymclass-button" type="submit" value="Update Class"/>
         </div>
       </form>
-
-      <form method="post" action="/classes/<%= @gymclass.id %>/delete">
-        <input class="new-gymclass-button" type="submit" value="Delete Class"/>
-      </form>
     </div>
+
+    <form method="post" action="/classes/<%= @gymclass.id %>/delete">
+      <input class="new-gymclass-button delete-button" type="submit" value="Delete Class"/>
+    </form>
 
     <div class="edit-gymclass-members">
       <div class="edit-gymclass-title">Add Members:</div>

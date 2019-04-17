@@ -204,6 +204,14 @@ p {
   font-family: var(--my-font-family-1), var(--my-font-family-2);
 }
 
+.delete-button {
+  background-color: Salmon;
+  padding: 2px 2px;
+  margin: 0.5em;
+  font-size: 1.1em;
+  width: 8em;
+}
+
 /* Member index */
 .member-table, .gymclass-booking-member-table {
   width: 30em;
