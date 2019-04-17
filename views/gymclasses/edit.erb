@@ -1,7 +1,7 @@
 <div class="edit-gymclass">
   <div class="edit-gymclass-info">
-    <div class="edit-gymclass-title">Edit <%= @gymclass.name %></div>
-    <form class="gymclass-form" method="POST" action="/classes/<%= @gymclass.id %>">
+    <div class="edit-gymclass-title">Edit <%= @gymclass.name %> <%= ' - peak time ' if @gymclass.is_peak() %> <%= ' - FULL' if @gymclass.spaces == 0%></div>
+    <form class="gymclass-form <%= @gymclass.spaces == 0 ? 'gymclass-form-full' : @gymclass.is_peak() ? 'gymclass-form-ispeak' : '' %>" method="POST" action="/classes/<%= @gymclass.id %>">
       <div class="gymclass-formrow">
         <label for="name-field">Name:</label>
         <input type="text" name="name" id="name-field" value="<%= @gymclass.name %>" required/>
@@ -25,9 +25,10 @@
     </form>
 
     <div class="edit-gymclass-members">
-      <div class="edit-gymclass-title">Add Members:</div>
+      <div class="edit-gymclass-title">Add Members <%= @gymclass.is_peak() ? "(only premium)" : "" %>:</div>
       <form class="add-members" method="POST" action="/bookings">
         <select name="member_id" required>
+          <%= @gymclass.available_members.count() > 0 ? "<option disabled selected value> -- please choose a member -- </option>" : "<option disabled selected value> -- no members available -- </option>"%>
           <% @gymclass.available_members.each do |member| %>
           <option value="<%= member.id %>" ><%= member.name %></option>
           <% end %>

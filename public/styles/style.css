@@ -146,6 +146,14 @@ p {
   height: 7.2em;
 }
 
+.gymclass-form-full {
+  background: #66CDAA;
+}
+
+.gymclass-form-ispeak {
+  background: #6495ED;
+}
+
 .gymclass-form label, .member-form label{
   font-size: 1.2em;
 }
