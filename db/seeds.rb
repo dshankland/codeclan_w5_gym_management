@@ -11,7 +11,7 @@ GymClass.delete_all()
 membership_type = [true, false]
 member_first_names = ['John', 'Kevin', 'Lindsey', 'Mhairi', 'Paul', 'Sri', 'Theo', 'Anne', 'Atyha', 'Scott', 'David', 'Calum', 'Danny', 'Hugh', 'Darren', 'Stelios', 'Arnold', 'Sandy', 'Joe', 'Bob', 'Andy', 'Michael']
 member_second_names = ['Shankland', 'Campbell', 'Schwarzenegger', 'Murray', 'Moir', 'Izzard', "O’Hagan", 'McCrindle', 'Flannery', 'Wright', 'McKendry', 'Maitland', 'Constantinou', 'Cannon', 'Arshad', 'Dara', 'Jarvis', 'Welsh']
-gymclass_names = ['Body Combat', 'Yoga', 'Weights', 'Spin', 'Pump', 'Bootcamp', 'Kettlebells', 'Circuits', 'Abs', 'Legs,Bums,Tums']
+gymclass_names = ['Body Combat', 'Yoga', 'Weights', 'Spin', 'Pump', 'Bootcamp', 'Kettlebells', 'Circuits', 'Abs']
 gymclass_sizes = [5,10,15]
 
 # create 20 sample members
