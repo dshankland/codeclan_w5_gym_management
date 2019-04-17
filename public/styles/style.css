@@ -1,18 +1,28 @@
 :root {
   /* --my-font-family-1: "Rokkitt"; */
-  --my-font-family-1: "Nunito";
+  --my-font-family-1: "Oxygen";
+  /* --my-font-family-1: "Nunito"; */
   --my-font-family-2: serif;
+  --my-font-family-3: "Special Elite";
 }
 
 /* Header and logo */
 .header {
   /* background:linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url("/images/logo.png") no-repeat fixed; */
-  background:url("/images/logo_black_new.png") no-repeat center;
+  background:url("/images/logo_all_new.png") no-repeat left;
   background-color: #000000;
   padding: 1px;
-  text-align: center;
-  height: 100px;
-  background-size: 100px 100px, auto;
+  font-family: var(--my-font-family-3), var(--my-font-family-1);
+  text-align: left;
+  color: CornFlowerBlue;
+  height: 90px;
+  background-size: contain;
+  background-position: 2%;
+  padding: 5px 0px;
+}
+
+.header h1 {
+  font-size: 3em;
 }
 
 /* Navigation menu bar */
@@ -99,6 +109,7 @@ p {
 
 .schedule-card a {
   text-decoration: none;
+  color: Black;
 }
 
 /* Create seven equal columns that floats next to each other */
@@ -132,7 +143,7 @@ p {
   background: #eeeeee;
   font-size: 1.1em;
   padding: 2px 2px;
-  height: 7em;
+  height: 7.2em;
 }
 
 .gymclass-form label, .member-form label{
@@ -168,6 +179,7 @@ p {
   width: 7em;
   font-size: 1em;
   border: 1px solid LightSlateGrey;
+  font-family: var(--my-font-family-1), var(--my-font-family-2);
 }
 
 .new-member-button, .new-gymclass-button {
@@ -178,6 +190,18 @@ p {
   width: 7em;
   font-size: 1em;
   border: 1px solid LightSlateGrey;
+  font-family: var(--my-font-family-1), var(--my-font-family-2);
+}
+
+.remove-member-gymclass-button {
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  height: 1.6em;
+  width: 7em;
+  font-size: 1em;
+  border: 1px solid LightSlateGrey;
+  font-family: var(--my-font-family-1), var(--my-font-family-2);
 }
 
 /* Member index */
@@ -197,6 +221,18 @@ p {
 
 .member-table td{
   font-size: 1em;
+}
+
+.gymclass-booking-member-table {
+  width: 27em;
+}
+
+.gymclass-booking-member-table td {
+  height: 10px;
+}
+
+.gymclass-booking-member-table td:nth-child(2) {
+  text-align: right;
 }
 
 .new-member-title, .edit-member-title, .new-gymclass-title, .edit-gymclass-title {
