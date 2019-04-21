@@ -29,7 +29,7 @@ for i in 0..6 do
   gymclass1.save()
 end
 
-# Every day at 19:00
+# Every day at 19:00 setup Circuits
 starttime18 = starttime7 + (60*60*11)
 for i in 0..6 do
   newtime = starttime18 + (60*60*24*i)

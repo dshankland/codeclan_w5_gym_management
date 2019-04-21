@@ -2,27 +2,6 @@
   <button class="new-gymclass-button" type="button" onclick="window.location='/classes/new';return false;">New Class</button>
 </div>
 
-<table hidden>
-  <tr>
-    <th>Name</th>
-    <th>Date/Time</th>
-    <th>Spaces</th>
-    <th>Delete</th>
-  </tr>
-  <% for gymclass in @gymclasses %>
-  <tr>
-    <td><a href="/classes/<%= gymclass.id %>"><%= gymclass.name %></a></td>
-    <td><%= gymclass.time.strftime('%F %R') %></td>
-    <td><%= gymclass.spaces %></td>
-    <td>
-      <form method="post" action="/classes/<%= gymclass.id %>/delete">
-        <input type="submit" value="Delete"/>
-      </form>
-    </td>
-  </tr>
-  <% end %>
-</table>
-
 <div class="schedule-grid">
   <% for i in 0..6 do %>
   <div class="schedule-column">

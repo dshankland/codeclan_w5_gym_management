@@ -1,0 +1,74 @@
+Wojtek's CSS
+
+<style type="text/css">
+  div.form_row label, input{
+    display: inline-block;
+    width: 150px;
+  }
+  div.form_row_cta {
+    width: 310px;
+    padding: 20px 0 20px 0;
+    display: flex;
+    justify-content: space-between;
+  }
+  div.form_row_cta button {
+    background: transparent;
+    text-decoration: underline;
+    border: 0 none;
+
+  }
+  div.form_row_cta input[type="submit"] {
+    font-size: 1.0em;
+    padding: 10px;
+  }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+Option 1
+
+<label for="first_name">Name</label>
+<input name="first_name" id="first_name" type="text">
+
+css:
+
+label {
+  display: block;
+}
+input[type="text"] {
+  display: block;
+}
+
+input[type="submit"] {
+  whatever;
+}
+
+button {
+  whatever;
+}
+
+Option 2
+
+<div class="form_row">
+  <label for="first_name">Name</label>
+  <input name="first_name" id="first_name" type="text">
+</div>
+
+css:
+
+div.form_row {
+  display: block;
+}
+
+div.form_row label, input[type="text"] {
+  display: inline-block;
+  width: 200px;
+}
