@@ -65,6 +65,6 @@ for i in 1..100
   gymclass.update()
 end
 
-binding.pry
+# binding.pry
 
 nil
