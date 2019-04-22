@@ -118,7 +118,7 @@ class GymClass
   # bodged this to run using interpolation as values $1 is not being detected for some reason
   def self.date_range(days)
     sql = "SELECT * FROM gymclasses WHERE DATE_TRUNC('day',time) = CURRENT_DATE + interval '#{days} day' ORDER BY time"
-    values = [days]
+    # values = [days]
     results = SqlRunner.run(sql)
     return results.map {|gymclass| GymClass.new(gymclass)}
   end
