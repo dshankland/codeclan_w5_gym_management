@@ -22,9 +22,9 @@ for i in 1..50
   member1.save()
 end
 
-puts 'generating daily 7am class for a year...'
+puts 'generating daily 7am class for a 3 months...'
 # let's create a years worth of stuff!
-days = 365
+days = 365/4
 # Every day at 07:00 setup Bootcamp
 starttime7 = Time.parse('07:00', Time.now())
 for i in 0..days do
@@ -33,7 +33,7 @@ for i in 0..days do
   gymclass1.save()
 end
 
-puts 'generating daily 6pm class for a year...'
+puts 'generating daily 6pm class for a 3 months...'
 # Every day at 18:00 setup Circuits
 starttime18 = starttime7 + (60*60*11)
 for i in 0..days do
@@ -42,7 +42,7 @@ for i in 0..days do
   gymclass1.save()
 end
 
-puts "generating #{days*14} hourly timeslots for a year..."
+puts "generating #{days*14} hourly timeslots for a 3 months..."
 # generate hour timeslots for the next 365 days from 8 - 10pm
 hour = 60*60
 starttime8 = starttime7 + hour
@@ -55,19 +55,19 @@ for i in 0..days
   end
 end
 
-puts "generating #{7*365} classes for a year..."
-yearly_avg_classes = 7*365
+puts "generating #{(7*365)/4} classes for a 3 months..."
+three_monthly_avg_classes = (7*365)/4
 # generate 50 random classes throughout the next 365 days
-for i in 1..yearly_avg_classes
+for i in 1..three_monthly_avg_classes
   gymclass1 = GymClass.new({'name' => gymclass_names.sample(), 'time' => time_array.sample(), 'spaces' => gymclass_sizes.sample()})
   gymclass1.save()
 end
 
-puts "generating #{52*100} bookings for a year..."
+puts "generating #{(52*100)/4} bookings for a 3 months..."
 # reckon we need 100*52 bookings to avaerage out over the year..
 # create 100 random class bookings over the classes
-yearly_bookings = 52*100
-for i in 1..yearly_bookings
+three_months_bookings = (52/4)*100
+for i in 1..three_months_bookings
   gymclass = GymClass.all().sample()
   params = {'member_id' => gymclass.available_members().sample().id, 'gymclass_id' => gymclass.id}
   booking = Booking.new(params)
