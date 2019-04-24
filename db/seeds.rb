@@ -2,7 +2,7 @@ require_relative('../models/member.rb')
 require_relative('../models/gymclass.rb')
 require_relative('../models/booking.rb')
 require('time')
-require('pry-byebug')
+# require('pry-byebug')
 
 Booking.delete_all()
 Member.delete_all()
@@ -14,34 +14,40 @@ member_second_names = ['Shankland', 'Campbell', 'Schwarzenegger', 'Murray', 'Moi
 gymclass_names = ['Body Combat', 'Yoga', 'Weights', 'Spin', 'Pump', 'Bootcamp', 'Kettlebells', 'Circuits', 'Abs']
 gymclass_sizes = [5,10,15]
 
-# create 20 sample members
-for i in 1..20
+# create 50 sample members
+puts 'generating 50 members...'
+for i in 1..50
   member_name = "#{member_first_names.sample()} #{member_second_names.sample()}"
   member1 = Member.new({'name' => member_name, 'premium' => membership_type.sample()})
   member1.save()
 end
 
+puts 'generating daily 7am class for a year...'
+# let's create a years worth of stuff!
+days = 365
 # Every day at 07:00 setup Bootcamp
 starttime7 = Time.parse('07:00', Time.now())
-for i in 0..6 do
+for i in 0..days do
   newtime = starttime7 + (60*60*24*i)
   gymclass1 = GymClass.new({'name' => gymclass_names[5], 'time' => newtime, 'spaces' => 10})
   gymclass1.save()
 end
 
-# Every day at 19:00 setup Circuits
+puts 'generating daily 6pm class for a year...'
+# Every day at 18:00 setup Circuits
 starttime18 = starttime7 + (60*60*11)
-for i in 0..6 do
+for i in 0..days do
   newtime = starttime18 + (60*60*24*i)
   gymclass1 = GymClass.new({'name' => gymclass_names[7], 'time' => newtime, 'spaces' => 10})
   gymclass1.save()
 end
 
-# generate hour timeslots for the next 7 days from 8 - 10pm
+puts "generating #{days*14} hourly timeslots for a year..."
+# generate hour timeslots for the next 365 days from 8 - 10pm
 hour = 60*60
 starttime8 = starttime7 + hour
 time_array = [starttime8]
-for i in 0..6
+for i in 0..days
   starttime = starttime8 + (60*60*24*i)
   time_array.push(starttime)
   for i in 1..14
@@ -49,14 +55,19 @@ for i in 0..6
   end
 end
 
-# generate 50 random classes throughout the next 7 days
-for i in 1..50
+puts "generating #{7*365} classes for a year..."
+yearly_avg_classes = 7*365
+# generate 50 random classes throughout the next 365 days
+for i in 1..yearly_avg_classes
   gymclass1 = GymClass.new({'name' => gymclass_names.sample(), 'time' => time_array.sample(), 'spaces' => gymclass_sizes.sample()})
   gymclass1.save()
 end
 
+puts "generating #{52*100} bookings for a year..."
+# reckon we need 100*52 bookings to avaerage out over the year..
 # create 100 random class bookings over the classes
-for i in 1..100
+yearly_bookings = 52*100
+for i in 1..yearly_bookings
   gymclass = GymClass.all().sample()
   params = {'member_id' => gymclass.available_members().sample().id, 'gymclass_id' => gymclass.id}
   booking = Booking.new(params)
@@ -67,4 +78,4 @@ end
 
 # binding.pry
 
-nil
+# nil
